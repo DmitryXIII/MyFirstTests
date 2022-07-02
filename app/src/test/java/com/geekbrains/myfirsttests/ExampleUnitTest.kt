@@ -11,7 +11,22 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun emailValidator_invalidEmailNoDomain_False() {
+        assertFalse(EmailValidator.isValidEmail("anything@mail"))
+    }
+
+    @Test
+    fun emailValidator_EmptyInput_False() {
+        assertFalse(EmailValidator.isValidEmail(""))
+    }
+
+    @Test
+    fun emailValidator_DotsOnly_False() {
+        assertFalse(EmailValidator.isValidEmail("..."))
+    }
+
+    @Test
+    fun emailValidator_TwoAts_False() {
+        assertFalse(EmailValidator.isValidEmail("login@@mail.ru"))
     }
 }
